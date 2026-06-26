@@ -21,7 +21,12 @@ font-family:'Poppins',sans-serif;
 
 body{
 
-background:linear-gradient(135deg,#2563eb,#7c3aed);
+background:linear-gradient(
+135deg,
+#eef4ff 0%,
+#e8eefc 45%,
+#f7f9fc 100%
+);
 
 min-height:100vh;
 
@@ -31,35 +36,44 @@ justify-content:center;
 
 align-items:center;
 
-padding:40px;
+padding:50px;
 
 }
 
 .container{
 
-width:800px;
+width:900px;
 
-background:rgba(255,255,255,.12);
+background:white;
 
-backdrop-filter:blur(18px);
+border-radius:24px;
 
-border-radius:20px;
+padding:45px;
 
-padding:40px;
+box-shadow:
+0 25px 60px rgba(0,0,0,.08);
 
-color:white;
+}
 
-box-shadow:0 25px 60px rgba(0,0,0,.25);
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:30px;
 
 }
 
 .badge{
 
-display:inline-block;
+background:#2563eb;
+
+color:white;
 
 padding:8px 18px;
-
-background:#10b981;
 
 border-radius:30px;
 
@@ -67,13 +81,21 @@ font-size:13px;
 
 font-weight:600;
 
-margin-bottom:20px;
+}
+
+.version{
+
+font-size:13px;
+
+color:#64748b;
 
 }
 
 h1{
 
-font-size:34px;
+font-size:42px;
+
+color:#111827;
 
 margin-bottom:10px;
 
@@ -81,11 +103,29 @@ margin-bottom:10px;
 
 .subtitle{
 
-color:#dbeafe;
+color:#64748b;
 
-margin-bottom:35px;
+font-size:17px;
 
-line-height:1.6;
+line-height:1.7;
+
+margin-bottom:30px;
+
+}
+
+.info{
+
+background:#eff6ff;
+
+border-left:5px solid #2563eb;
+
+padding:16px;
+
+border-radius:10px;
+
+color:#1e3a8a;
+
+margin-bottom:30px;
 
 }
 
@@ -93,11 +133,13 @@ label{
 
 display:block;
 
+margin-top:22px;
+
 margin-bottom:8px;
 
-margin-top:18px;
-
 font-weight:600;
+
+color:#1f2937;
 
 }
 
@@ -105,15 +147,28 @@ input,textarea{
 
 width:100%;
 
-padding:15px;
-
-border:none;
-
-border-radius:12px;
+padding:16px;
 
 font-size:15px;
 
+background:#f8fafc;
+
+border:1px solid #cbd5e1;
+
+border-radius:12px;
+
 outline:none;
+
+transition:.25s;
+
+}
+
+input:focus,
+textarea:focus{
+
+border-color:#2563eb;
+
+box-shadow:0 0 0 4px rgba(37,99,235,.12);
 
 }
 
@@ -127,87 +182,139 @@ button{
 
 width:100%;
 
-margin-top:25px;
+margin-top:28px;
 
-padding:16px;
+padding:18px;
 
-font-size:18px;
+font-size:17px;
 
-background:#3b82f6;
+font-weight:600;
 
 color:white;
 
+background:linear-gradient(
+90deg,
+#2563eb,
+#4f46e5
+);
+
 border:none;
 
-border-radius:12px;
+border-radius:14px;
 
 cursor:pointer;
 
 transition:.3s;
 
-font-weight:600;
-
 }
 
 button:hover{
 
-background:#2563eb;
-
 transform:translateY(-2px);
+
+box-shadow:0 12px 25px rgba(37,99,235,.25);
 
 }
 
-.workflow{
+.grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:25px;
 
 margin-top:35px;
 
-background:rgba(255,255,255,.12);
+}
 
-padding:25px;
+.card{
 
-border-radius:15px;
+background:#f8fafc;
+
+border:1px solid #e2e8f0;
+
+border-radius:16px;
+
+padding:22px;
 
 }
 
-.workflow h3{
+.card h3{
 
-margin-bottom:18px;
+margin-bottom:15px;
+
+color:#111827;
 
 }
 
-.workflow p{
+.card p{
 
 margin:12px 0;
+
+color:#475569;
+
+}
+
+.status{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:15px;
+
+font-weight:500;
+
+}
+
+.dot{
+
+width:10px;
+
+height:10px;
+
+border-radius:50%;
+
+background:#22c55e;
 
 }
 
 .loading{
 
+background:#eff6ff;
+
+border-left:5px solid #2563eb;
+
+padding:18px;
+
 margin-top:25px;
 
-padding:20px;
+border-radius:10px;
 
-background:white;
-
-color:#111827;
-
-border-radius:12px;
+color:#1e40af;
 
 line-height:2;
+
+animation:pulse 1.4s infinite;
 
 }
 
 .success{
 
+background:#ecfdf5;
+
+border-left:5px solid #10b981;
+
+padding:18px;
+
 margin-top:25px;
 
-padding:20px;
-
-background:#dcfce7;
+border-radius:10px;
 
 color:#065f46;
-
-border-radius:12px;
 
 line-height:2;
 
@@ -215,15 +322,27 @@ line-height:2;
 
 .error{
 
+background:#fef2f2;
+
+border-left:5px solid #ef4444;
+
+padding:18px;
+
 margin-top:25px;
 
-padding:20px;
-
-background:#fee2e2;
+border-radius:10px;
 
 color:#991b1b;
 
-border-radius:12px;
+}
+
+@keyframes pulse{
+
+0%{opacity:.6;}
+
+50%{opacity:1;}
+
+100%{opacity:.6;}
 
 }
 
@@ -233,25 +352,31 @@ margin-top:35px;
 
 text-align:center;
 
-font-size:13px;
+color:#94a3b8;
 
-color:#dbeafe;
+font-size:13px;
 
 }
 
-@media(max-width:850px){
+@media(max-width:900px){
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
 
 .container{
 
 width:100%;
 
-padding:25px;
+padding:30px;
 
 }
 
 h1{
 
-font-size:28px;
+font-size:34px;
 
 }
 
@@ -265,9 +390,15 @@ font-size:28px;
 
 <div class="container">
 
-<div class="badge">
+<div class="header">
 
+<div class="badge">
 🤖 AI ACTIVE
+</div>
+
+<div class="version">
+Enterprise Workflow v1.0
+</div>
 
 </div>
 
@@ -275,43 +406,35 @@ font-size:28px;
 
 <p class="subtitle">
 
-Automated Project Intake, AI Requirement Analysis & Intelligent Team Routing
+Automate project intake, AI-powered requirement analysis, intelligent team routing, and automated stakeholder notifications.
 
 </p>
+
+<div class="info">
+
+💡 Submit your project request. Gemini AI analyzes requirements, extracts structured information, identifies missing details, assigns the correct department, and triggers automated notifications.
+
+</div>
 
 <label>👤 Client Name</label>
 
 <input
-
 id="name"
-
-placeholder="John Doe"
-
->
+placeholder="John Doe">
 
 <label>📧 Email</label>
 
 <input
-
 id="email"
-
 type="email"
-
-placeholder="john@company.com"
-
->
+placeholder="john@company.com">
 
 <label>📝 Project Description</label>
 
 <textarea
-
 id="request"
-
 rows="8"
-
-placeholder="Describe your project, budget, timeline, goals and requirements..."
-
-></textarea>
+placeholder="Describe your project, timeline, budget and business objectives..."></textarea>
 
 <button onclick="submitProject()">
 
@@ -320,22 +443,59 @@ placeholder="Describe your project, budget, timeline, goals and requirements..."
 </button>
 
 <div id="status"></div>
+<div class="grid">
 
-<div class="workflow">
+<div class="card">
 
-<h3>⚙️ Workflow</h3>
+<h3>⚙️ AI Workflow</h3>
 
 <p>📥 Receive Client Request</p>
 
 <p>🤖 AI Requirement Analysis</p>
 
-<p>🧠 Extract Project Requirements</p>
+<p>📋 Extract Project Requirements</p>
 
 <p>🎯 Determine Project Team</p>
 
 <p>📧 Notify Internal Stakeholders</p>
 
-<p>✅ Send Client Confirmation</p>
+<p>✅ Generate Client Confirmation</p>
+
+</div>
+
+<div class="card">
+
+<h3>📊 Live Status</h3>
+
+<div class="status">
+<div class="dot"></div>
+AI Engine Ready
+</div>
+
+<div class="status">
+<div class="dot"></div>
+Webhook Connected
+</div>
+
+<div class="status">
+<div class="dot"></div>
+Workflow Active
+</div>
+
+<div class="status">
+<div class="dot"></div>
+Automation Enabled
+</div>
+
+<hr style="margin:20px 0;border:none;border-top:1px solid #e2e8f0;">
+
+<p><strong>Today's Requests</strong><br>12</p>
+
+<p><strong>Automation Rate</strong><br>98%</p>
+
+<p><strong>Departments</strong><br>5</p>
+
+</div>
 
 </div>
 
@@ -351,15 +511,13 @@ Powered by <strong>Gemini AI</strong> • <strong>n8n Automation</strong> • In
 
 async function submitProject(){
 
-const name=document.getElementById("name").value;
-
-const email=document.getElementById("email").value;
-
-const request=document.getElementById("request").value;
+const name=document.getElementById("name").value.trim();
+const email=document.getElementById("email").value.trim();
+const request=document.getElementById("request").value.trim();
 
 if(!name || !email || !request){
 
-alert("Please fill all fields.");
+alert("Please fill all the fields.");
 
 return;
 
@@ -373,23 +531,23 @@ document.getElementById("status").innerHTML=`
 
 <br>
 
-✅ Understanding requirements...
+✅ Understanding project requirements
 
 <br>
 
-✅ Extracting project details...
+✅ Extracting structured information
 
 <br>
 
-✅ Identifying appropriate department...
+✅ Identifying required departments
 
 <br>
 
-✅ Routing workflow...
+✅ Preparing workflow
 
 <br>
 
-✅ Preparing client confirmation...
+✅ Sending notifications
 
 </div>
 
@@ -425,21 +583,27 @@ request:request
 
 );
 
-await response.text();
+if(!response.ok){
+
+throw new Error("Workflow failed");
+
+}
 
 document.getElementById("status").innerHTML=`
 
 <div class="success">
 
-<h2>🎉 Project Successfully Processed</h2>
+<h2>🎉 Project Successfully Submitted</h2>
 
-<p>✔ AI analyzed your request</p>
+<br>
 
-<p>✔ Requirements extracted</p>
+<p>✔ Request received</p>
 
-<p>✔ Appropriate team assigned</p>
+<p>✔ AI analyzed requirements</p>
 
-<p>✔ Internal notification triggered</p>
+<p>✔ Team assignment completed</p>
+
+<p>✔ Internal workflow triggered</p>
 
 <p>✔ Client confirmation generated</p>
 
@@ -448,9 +612,7 @@ document.getElementById("status").innerHTML=`
 `;
 
 document.getElementById("name").value="";
-
 document.getElementById("email").value="";
-
 document.getElementById("request").value="";
 
 }
@@ -461,11 +623,11 @@ document.getElementById("status").innerHTML=`
 
 <div class="error">
 
-❌ Unable to connect to the AI workflow.
+<h3>❌ Unable to process request</h3>
 
-<br><br>
+<br>
 
-Please try again.
+Please verify that your n8n workflow is active and try again.
 
 </div>
 
