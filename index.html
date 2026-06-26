@@ -1,46 +1,262 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>AI Project Intake Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Operations Coordinator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
 body{
-font-family:Arial;
-background:#f4f6f8;
+
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+min-height:100vh;
+
 display:flex;
+
 justify-content:center;
+
+align-items:center;
+
 padding:40px;
+
 }
 
 .container{
-background:white;
-padding:30px;
-width:600px;
-border-radius:10px;
-box-shadow:0 0 15px rgba(0,0,0,.1);
+
+width:800px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(18px);
+
+border-radius:20px;
+
+padding:40px;
+
+color:white;
+
+box-shadow:0 25px 60px rgba(0,0,0,.25);
+
+}
+
+.badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+background:#10b981;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:600;
+
+margin-bottom:20px;
+
+}
+
+h1{
+
+font-size:34px;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+color:#dbeafe;
+
+margin-bottom:35px;
+
+line-height:1.6;
+
+}
+
+label{
+
+display:block;
+
+margin-bottom:8px;
+
+margin-top:18px;
+
+font-weight:600;
+
 }
 
 input,textarea{
+
 width:100%;
-padding:12px;
-margin-top:10px;
-margin-bottom:20px;
+
+padding:15px;
+
+border:none;
+
+border-radius:12px;
+
+font-size:15px;
+
+outline:none;
+
+}
+
+textarea{
+
+resize:none;
+
 }
 
 button{
-padding:12px 20px;
-background:#2563eb;
+
+width:100%;
+
+margin-top:25px;
+
+padding:16px;
+
+font-size:18px;
+
+background:#3b82f6;
+
 color:white;
+
 border:none;
+
+border-radius:12px;
+
 cursor:pointer;
-font-size:16px;
+
+transition:.3s;
+
+font-weight:600;
+
 }
 
-#status{
-margin-top:20px;
-font-weight:bold;
+button:hover{
+
+background:#2563eb;
+
+transform:translateY(-2px);
+
 }
+
+.workflow{
+
+margin-top:35px;
+
+background:rgba(255,255,255,.12);
+
+padding:25px;
+
+border-radius:15px;
+
+}
+
+.workflow h3{
+
+margin-bottom:18px;
+
+}
+
+.workflow p{
+
+margin:12px 0;
+
+}
+
+.loading{
+
+margin-top:25px;
+
+padding:20px;
+
+background:white;
+
+color:#111827;
+
+border-radius:12px;
+
+line-height:2;
+
+}
+
+.success{
+
+margin-top:25px;
+
+padding:20px;
+
+background:#dcfce7;
+
+color:#065f46;
+
+border-radius:12px;
+
+line-height:2;
+
+}
+
+.error{
+
+margin-top:25px;
+
+padding:20px;
+
+background:#fee2e2;
+
+color:#991b1b;
+
+border-radius:12px;
+
+}
+
+footer{
+
+margin-top:35px;
+
+text-align:center;
+
+font-size:13px;
+
+color:#dbeafe;
+
+}
+
+@media(max-width:850px){
+
+.container{
+
+width:100%;
+
+padding:25px;
+
+}
+
+h1{
+
+font-size:28px;
+
+}
+
+}
+
 </style>
 
 </head>
@@ -49,22 +265,85 @@ font-weight:bold;
 
 <div class="container">
 
-<h2>AI Project Intake Portal</h2>
+<div class="badge">
 
-<input id="name" placeholder="Client Name">
+🤖 AI ACTIVE
 
-<input id="email" placeholder="Email">
+</div>
+
+<h1>AI Operations Coordinator</h1>
+
+<p class="subtitle">
+
+Automated Project Intake, AI Requirement Analysis & Intelligent Team Routing
+
+</p>
+
+<label>👤 Client Name</label>
+
+<input
+
+id="name"
+
+placeholder="John Doe"
+
+>
+
+<label>📧 Email</label>
+
+<input
+
+id="email"
+
+type="email"
+
+placeholder="john@company.com"
+
+>
+
+<label>📝 Project Description</label>
 
 <textarea
+
 id="request"
+
 rows="8"
-placeholder="Describe your project"></textarea>
+
+placeholder="Describe your project, budget, timeline, goals and requirements..."
+
+></textarea>
 
 <button onclick="submitProject()">
-Submit Project
+
+🚀 Analyze & Route Project
+
 </button>
 
 <div id="status"></div>
+
+<div class="workflow">
+
+<h3>⚙️ Workflow</h3>
+
+<p>📥 Receive Client Request</p>
+
+<p>🤖 AI Requirement Analysis</p>
+
+<p>🧠 Extract Project Requirements</p>
+
+<p>🎯 Determine Project Team</p>
+
+<p>📧 Notify Internal Stakeholders</p>
+
+<p>✅ Send Client Confirmation</p>
+
+</div>
+
+<footer>
+
+Powered by <strong>Gemini AI</strong> • <strong>n8n Automation</strong> • Intelligent Workflow Routing
+
+</footer>
 
 </div>
 
@@ -72,35 +351,132 @@ Submit Project
 
 async function submitProject(){
 
-document.getElementById("status").innerHTML="Processing...";
+const name=document.getElementById("name").value;
+
+const email=document.getElementById("email").value;
+
+const request=document.getElementById("request").value;
+
+if(!name || !email || !request){
+
+alert("Please fill all fields.");
+
+return;
+
+}
+
+document.getElementById("status").innerHTML=`
+
+<div class="loading">
+
+<h3>🤖 AI is processing your request...</h3>
+
+<br>
+
+✅ Understanding requirements...
+
+<br>
+
+✅ Extracting project details...
+
+<br>
+
+✅ Identifying appropriate department...
+
+<br>
+
+✅ Routing workflow...
+
+<br>
+
+✅ Preparing client confirmation...
+
+</div>
+
+`;
+
+try{
 
 const response=await fetch(
+
 "https://navithae.app.n8n.cloud/webhook/project-request",
+
 {
 
 method:"POST",
+
 headers:{
+
 "Content-Type":"application/json"
+
 },
+
 body:JSON.stringify({
 
-name:document.getElementById("name").value,
+name:name,
 
-email:document.getElementById("email").value,
+email:email,
 
-request:document.getElementById("request").value
+request:request
 
 })
-});
 
-const data=await response.text();
+}
 
-document.getElementById("status").innerHTML=
-"✅ Request Submitted Successfully";
+);
+
+await response.text();
+
+document.getElementById("status").innerHTML=`
+
+<div class="success">
+
+<h2>🎉 Project Successfully Processed</h2>
+
+<p>✔ AI analyzed your request</p>
+
+<p>✔ Requirements extracted</p>
+
+<p>✔ Appropriate team assigned</p>
+
+<p>✔ Internal notification triggered</p>
+
+<p>✔ Client confirmation generated</p>
+
+</div>
+
+`;
+
+document.getElementById("name").value="";
+
+document.getElementById("email").value="";
+
+document.getElementById("request").value="";
+
+}
+
+catch(error){
+
+document.getElementById("status").innerHTML=`
+
+<div class="error">
+
+❌ Unable to connect to the AI workflow.
+
+<br><br>
+
+Please try again.
+
+</div>
+
+`;
+
+}
 
 }
 
 </script>
 
 </body>
+
 </html>
